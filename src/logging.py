@@ -60,4 +60,7 @@ class APILogger:
     def api_request(self, method: str, url: str, status: int, content: str):
         self.logger.debug(f"[{status}] {method} {url}: {content}")
 
+    def debug(self, message: str):
+        self.logger.debug(message)
+
 LOGGER = APILogger()

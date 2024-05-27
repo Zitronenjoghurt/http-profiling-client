@@ -1,9 +1,9 @@
-from src.api.controller.aiohttp_controller import get
+from src.api.controller import request, HTTPMethod, HTTPVersion
 from src.error import ApiConnectionError
 
-async def ping() -> bool:
+async def ping(version: HTTPVersion) -> bool:
     try:
-        response = await get(endpoint_path=[""])
+        response = await request(version=version, method=HTTPMethod.GET, endpoint_path=[""])
     except ApiConnectionError:
         return False
     return response.status == 200
