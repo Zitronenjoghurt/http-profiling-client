@@ -12,10 +12,10 @@ class Config():
         
         config_data = file_to_dict(CONFIG_FILE_PATH)
         
-        self.URL = config_data.get("url", None)
+        self.HOSTNAME = config_data.get("hostname", None)
 
         try:
-            validate_of_type(self.URL, str, "url")
+            validate_of_type(self.HOSTNAME, str, "hostname")
         except ValueError as e:
             raise RuntimeError(f"An error occured while initializing config: {e}")
 

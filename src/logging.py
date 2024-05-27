@@ -1,4 +1,5 @@
 import logging
+from src.api.response import ApiResponse
 
 class LC:
     BLUE = '\033[94m'
@@ -56,9 +57,9 @@ class APILogger:
 
     def get_logger(self):
         return self.logger
-    
-    def api_request(self, method: str, url: str, status: int, content: str):
-        self.logger.debug(f"[{status}] {method} {url}: {content}")
+
+    def api_request(self, version: str, method: str, url: str, response: ApiResponse):
+        self.logger.debug(f"{version.upper()} {method.upper()} {url} ==({response.delay_ms}ms)> [{response.status}]:\n{response.content}")
 
     def debug(self, message: str):
         self.logger.debug(message)
